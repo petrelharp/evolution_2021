@@ -31,6 +31,8 @@ Other good ones:
 - [simbit](LINK)
 - [fastsimcoal](LINK)
 - [SFS_CODE](LINK)
+- [that other one](LINK)
+- [geowhatever](LINK)
 
 
 ## Development philosophy
@@ -155,6 +157,13 @@ Yan's video of a tree sequence
 
 (figure)
 
+##
+
+Now also supported by
+
+- geoXXX
+- the other one
+
 # Runtime
 
 ## basic demography
@@ -172,6 +181,12 @@ depends a lot on neighborhood size
 
 
 # Best practices
+
+## How long to run it for?
+
+what is equilibrium?
+
+when is recapitation ok?
 
 ## How to get help
 
