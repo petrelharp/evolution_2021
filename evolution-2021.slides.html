@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Peter Ralph   University of Oregon   Institute of Ecology and Evolution">
+  <title>New tools for popgen simulation and analysis:   What’s possible?</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/simple.css" id="theme">
+  <style type="text/css">
+
+  .reveal { font-size: 30px; }
+
+  .reveal h1 { font-size: 1.5em; } 
+
+  .reveal h2 { font-size: 1.2em; } 
+
+  .reveal .slides { text-align: left; }
+
+  .reveal .slides figure { text-align: center; }
+
+  .centered p { text-align: center; }
+
+  /* apply this to the columns div */
+  div.vcentered { display: flex; align-items: center; }
+
+  .caption p { font-size: 75%; }
+
+  .greyed { color: #4444; }
+
+  div.floatright { float: right; text-align: right; }
+
+  .reveal figcaption { display: none; }
+
+  .reveal img { border: none; }
+
+  .reveal section img { border: none; }
+
+  .MathJax_Display { margin: 0; }
+
+  img.finger { vertical-align: text-top; }
+
+  .smaller { font-size: 50% }
+  .smallish { font-size: 80% }
+
+  </style>
+
+  <div style="display: none">
+  \[
+  \newcommand{\E}{\mathbb{E}}
+  \renewcommand{\P}{\mathbb{P}}
+  \DeclareMathOperator{\var}{var}
+  \]
+  </div>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">New tools for popgen simulation and analysis: <br/> What’s possible?</h1>
+  <p class="author">Peter Ralph <br/> University of Oregon <br/> Institute of Ecology and Evolution</p>
+  <p class="date">Evolution 2021</p>
+</section>
+
+<section>
+<section id="overview-of-simulators" class="title-slide slide level1">
+<h1>Overview of simulators</h1>
+<!--
+- overview of simulators and development
+- background on forwards vs coalescent
+- bullet points of features
+- tree sequences: adding neutral mutations afterwards
+- benchmarking for "plain vanilla": how many individuals and how long a genome?
+- benchmarking for adding selection to (4) as a function of how much selection
+- benchmarking for spatial nonWF: as a function of neighborhood size
+- recapitation best practices
+-->
+<p><em>In this talk:</em></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>msprime: a coalescent simulator</li>
+<li>SLiM: a forwards simulator</li>
+</ul>
+<p>. . .</p>
+<p>Other good ones:</p>
+<ul>
+<li><a href="http://www1.montpellier.inra.fr/CBGP/software/gspace/download.html">Gspace</a></li>
+<li><a href="https://geonomics.readthedocs.io/en/latest/">geonomics</a></li>
+<li><a href="LINK">simbit</a></li>
+<li><a href="LINK">fastsimcoal</a></li>
+<li><a href="LINK">SFS_CODE</a></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<figure>
+<img data-src="figs/msprime-logo.png" style="width:80.0%" alt="msprime logo" /><figcaption aria-hidden="true">msprime logo</figcaption>
+</figure>
+<figure>
+<img data-src="figs/slim_logo.png" style="width:100.0%" alt="SLiM logo" /><figcaption aria-hidden="true">SLiM logo</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="development-philosophy" class="slide level2">
+<h2>Development philosophy</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>open, welcoming, supportive</li>
+<li>well-documented</li>
+<li>reliable, reproducible</li>
+<li>backwards compatible</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<figure>
+<img data-src="figs/tskit_logo.png" style="width:80.0%" alt="tskit logo" /><figcaption aria-hidden="true">tskit logo</figcaption>
+</figure>
+<p><em>tskit</em>: the tree sequence toolkit</p>
+<div class="floatright">
+<p><a href="tskit.dev">tskit.dev</a></p>
+</div>
+</div>
+</div>
+</section>
+<section id="forwards-or-backwards" class="slide level2">
+<h2>Forwards or backwards?</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>diagram of forwards simulation</p>
+</div><div class="column" style="width:50%;">
+<p>diagram of coalescent simulation</p>
+</div>
+</div>
+</section>
+<section id="forwards-or-backwards-1" class="slide level2">
+<h2>Forwards or backwards?</h2>
+<p>Do your digital organisms:</p>
+<ul>
+<li class="fragment">have at most one site under selection?</li>
+<li class="fragment">live in a collection of randomly-mating populations?</li>
+<li class="fragment">not need some specific life cycle?</li>
+</ul>
+<div class="fragment">
+<p>If so, then <em>coalescent simulation</em> is the way to go!</p>
+</div>
+</section></section>
+<section>
+<section id="msprime" class="title-slide slide level1">
+<h1>msprime</h1>
+<figure>
+<img data-src="figs/msprime-logo.png" alt="msprime logo" /><figcaption aria-hidden="true">msprime logo</figcaption>
+</figure>
+<div class="floatright">
+<figure>
+<img data-src="figs/jerome.jpeg" style="width:50.0%" alt="jerome kelleher" /><figcaption aria-hidden="true">jerome kelleher</figcaption>
+</figure>
+<div class="caption">
+<p><a href="http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004842">Kelleher, Etheridge, &amp; McVean</a></p>
+</div>
+</div>
+</section>
+<section id="msprime-v1.0" class="slide level2">
+<h2>msprime v1.0</h2>
+<figure>
+<img data-src="figs/msp_folks.png" alt="msprime collaborators" /><figcaption aria-hidden="true">msprime collaborators</figcaption>
+</figure>
+</section>
+<section id="new-features" class="slide level2">
+<h2>New features:</h2>
+<ul>
+<li>finite sites</li>
+<li>recombination rate maps</li>
+<li>mutation rate maps</li>
+<li>gene conversion</li>
+<li>nicer demographic model specification</li>
+</ul>
+</section>
+<section id="ancestry-models" class="slide level2">
+<h2>Ancestry models</h2>
+<ul>
+<li>“the” Kingman/Hudson coalescent</li>
+<li>discrete-time Wright-Fisher</li>
+<li>selective sweeps</li>
+<li>multiple mergers</li>
+</ul>
+<p><img data-src="figs/sweep_trees.svg" /></p>
+</section>
+<section id="mutation-models" class="slide level2">
+<h2>Mutation models</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>infinite sites/alleles</li>
+<li>nucleotides</li>
+<li>amino acids</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="figs/mutated_trees.svg" /></p>
+</div>
+</div>
+</section></section>
+<section>
+<section id="slim" class="title-slide slide level1">
+<h1>SLiM</h1>
+<p><img data-src="figs/slim_logo.png" alt="SLiM logo" /> <img data-src="figs/ben-haller.jpg" alt="Ben Haller" /></p>
+</section>
+<section id="an-eco-evolutionary-simulator" class="slide level2">
+<h2>An eco-evolutionary simulator</h2>
+<ul>
+<li>ecological dynamics with “non-Wright-Fisher” models</li>
+<li>populations in continuous, heterogeneous geography</li>
+<li>sex chromosomes, haplodiploidy</li>
+<li>complex traits</li>
+<li>context-dependent mutations</li>
+</ul>
+</section>
+<section id="section" class="slide level2">
+<h2></h2>
+<p>for instance: image of local adaptation</p>
+</section>
+<section id="section-1" class="slide level2" data-background-image="figs/slim_manual.png" data-background-position="left" data-background-size="50%">
+<h2 data-background-image="figs/slim_manual.png" data-background-position="left" data-background-size="50%"></h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+
+</div><div class="column" style="width:40%;">
+<p><strong>Getting started:</strong></p>
+<ol type="1">
+<li><p>read the introduction of the SLiM manual (chapters 1 &amp; 3)</p></li>
+<li><p>find a recipe that’s close to what you want to do</p></li>
+<li><p>open up the GUI and try it out</p></li>
+<li><p>print stuff out in the Eidos console</p></li>
+<li><p>add in bits from other recipes</p></li>
+<li><p>take a workshop!</p></li>
+</ol>
+</div>
+</div>
+</section></section>
+<section>
+<section id="tree-sequences" class="title-slide slide level1">
+<h1>tree sequences</h1>
+<figure>
+<img data-src="figs/tskit_logo.png" alt="tskit logo" /><figcaption aria-hidden="true">tskit logo</figcaption>
+</figure>
+</section>
+<section id="the-tree-sequence" class="slide level2">
+<h2>The tree sequence</h2>
+<p><video data-src="figs/MCEB-final_animation.mp4" controls=""><a href="figs/MCEB-final_animation.mp4">Video</a></video></p>
+<div class="caption">
+<p><em>video credit: Yan Wong</em></p>
+</div>
+</section>
+<section id="benefits-of-interoperability" class="slide level2">
+<h2>Benefits of interoperability</h2>
+<ul>
+<li>recapitate with msprime</li>
+<li>Add mutations with msprime</li>
+<li>interleave the two</li>
+</ul>
+<p>(figure)</p>
+</section>
+<section id="section-2" class="slide level2">
+<h2></h2>
+<p>Now also supported by</p>
+<ul>
+<li><a href="http://www1.montpellier.inra.fr/CBGP/software/gspace/download.html">Gspace</a></li>
+<li><a href="https://geonomics.readthedocs.io/en/latest/">geonomics</a></li>
+</ul>
+</section></section>
+<section>
+<section id="runtime" class="title-slide slide level1">
+<h1>Runtime</h1>
+
+</section>
+<section id="msprime-1" class="slide level2">
+<h2>msprime</h2>
+<p><img data-src="benchmarking/msprime_times.png" /></p>
+</section>
+<section id="basic-demography-slim" class="slide level2">
+<h2>basic demography: SLiM</h2>
+<p><img data-src="benchmarking/run_wf_neutral.speeds.png" /></p>
+<p>seconds per thousand individuals per thousand generations</p>
+</section>
+<section id="selection" class="slide level2">
+<h2>selection</h2>
+<p><img data-src="benchmarking/run_wf_selection.speeds.png" /></p>
+<p>seconds per thousand individuals per thousand generations per megabase of genome</p>
+</section>
+<section id="spatial-simulations" class="slide level2">
+<h2>spatial simulations:</h2>
+<p>depends a lot on neighborhood size</p>
+</section></section>
+<section>
+<section id="best-practices" class="title-slide slide level1">
+<h1>Best practices</h1>
+
+</section>
+<section id="how-long-to-run-it-for" class="slide level2">
+<h2>How long to run it for?</h2>
+<p>what is equilibrium?</p>
+<p>when is recapitation ok?</p>
+</section>
+<section id="how-to-get-help" class="slide level2">
+<h2>How to get help</h2>
+<ul>
+<li><p>SLiM: the mailing list</p></li>
+<li><p>msprime/tskit: “discussion” on github</p></li>
+</ul>
+</section></section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@^4//dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="https://unpkg.com/reveal.js@^4//plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/zoom/zoom.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/math/math.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display the page number of the current slide
+        slideNumber: true,
+        // Push each slide change to the browser history
+        history: true,
+        // Transition style
+        transition: 'none', // none/fade/slide/convex/concave/zoom
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>

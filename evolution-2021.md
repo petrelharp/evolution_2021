@@ -5,6 +5,8 @@ date: "Evolution 2021"
 ---
 
 
+# Overview of simulators
+
 <!--
 - overview of simulators and development
 - background on forwards vs coalescent
@@ -17,9 +19,10 @@ date: "Evolution 2021"
 -->
 
 
-# Overview of simulators
-
 *In this talk:*
+
+::: {.columns}
+:::::: {.column width=50%}
 
 - msprime: a coalescent simulator
 - SLiM: a forwards simulator
@@ -28,19 +31,47 @@ date: "Evolution 2021"
 
 Other good ones:
 
+- [Gspace](http://www1.montpellier.inra.fr/CBGP/software/gspace/download.html)
+- [geonomics](https://geonomics.readthedocs.io/en/latest/)
 - [simbit](LINK)
 - [fastsimcoal](LINK)
 - [SFS_CODE](LINK)
-- [that other one](LINK)
-- [geowhatever](LINK)
+
+:::
+:::::: {.column width=50%}
+
+
+![msprime logo](figs/msprime-logo.png){width=80%}
+
+![SLiM logo](figs/slim_logo.png){width=100%}
+
+:::
+::::::
 
 
 ## Development philosophy
+
+::: {.columns}
+:::::: {.column width=50%}
 
 - open, welcoming, supportive
 - well-documented
 - reliable, reproducible
 - backwards compatible
+
+:::
+:::::: {.column width=50%}
+
+![tskit logo](figs/tskit_logo.png){width=80%}
+
+*tskit*: the tree sequence toolkit
+
+::: {.floatright}
+[tskit.dev](tskit.dev)
+:::
+
+:::
+::::::
 
 
 ## Forwards or backwards?
@@ -48,12 +79,12 @@ Other good ones:
 ::: {.columns}
 :::::: {.column width=50%}
 
-forwards simulators
+diagram of forwards simulation
 
 ::: 
 :::::: {.column width=50%}
 
-coalescent simulators
+diagram of coalescent simulation
 
 :::
 :::::: 
@@ -75,9 +106,21 @@ is the way to go!
 
 # msprime
 
-![msprime logo](figures/msprime_logo.png)
+![msprime logo](figs/msprime-logo.png)
 
-![Jerome Kelleher](figures/jerome.jpg)
+::: {.floatright}
+![jerome kelleher](figs/jerome.jpeg){width=50%}
+
+
+:::: {.caption}
+[Kelleher, Etheridge, & McVean](http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004842) 
+::::
+:::
+
+
+## msprime v1.0
+
+![msprime collaborators](figs/msp_folks.png)
 
 ## New features:
 
@@ -94,22 +137,30 @@ is the way to go!
 - selective sweeps
 - multiple mergers
 
+![](figs/sweep_trees.svg)
 
 ## Mutation models
+
+::: {.columns}
+:::::: {.column width=50%}
 
 - infinite sites/alleles
 - nucleotides
 - amino acids
 
-. . .
+:::
+:::::: {.column width=50%}
 
-tree with fancy mutation model
+![](figs/mutated_trees.svg)
+
+:::
+::::::
 
 
 # SLiM
 
-![SLiM logo](figures/slim_logo.png)
-![Ben Haller](figures/ben_haller.png)
+![SLiM logo](figs/slim_logo.png)
+![Ben Haller](figs/ben-haller.jpg)
 
 
 ## An eco-evolutionary simulator
@@ -122,32 +173,45 @@ tree with fancy mutation model
 
 ##
 
+for instance:
 image of local adaptation
 
 
-## How to get started
+## {data-background-image="figs/slim_manual.png" data-background-position=left data-background-size=50%}
+
+::: {.columns}
+:::::: {.column width=60%}
+
+:::
+:::::: {.column width=40%}
+
+**Getting started:**
 
 1. read the introduction of the SLiM manual (chapters 1 & 3)
 2. find a recipe that's close to what you want to do
 3. open up the GUI and try it out
 
-. . .
 
 4. print stuff out in the Eidos console
 5. add in bits from other recipes
 
-. . .
-
 6. take a workshop!
 
 
+:::
+::::::
+
 # tree sequences
 
-![tskit logo](figures/tskit.png)
+![tskit logo](figs/tskit_logo.png)
 
-## 
+## The tree sequence
 
-Yan's video of a tree sequence
+![](figs/MCEB-final_animation.mp4)
+
+:::: {.caption}
+*video credit: Yan Wong*
+::::
 
 ## Benefits of interoperability
 
@@ -161,19 +225,26 @@ Yan's video of a tree sequence
 
 Now also supported by
 
-- geoXXX
-- the other one
+- [Gspace](http://www1.montpellier.inra.fr/CBGP/software/gspace/download.html)
+- [geonomics](https://geonomics.readthedocs.io/en/latest/)
 
 # Runtime
 
-## basic demography
+## msprime
 
-- msprime: XXX
-- SLiM: seconds per thousand individuals per megabase of genome per thousand generations
+![](benchmarking/msprime_times.png)
+
+## basic demography: SLiM
+
+![](benchmarking/run_wf_neutral.speeds.png)
+
+seconds per thousand individuals per thousand generations
 
 ## selection
 
-doesn't change much
+![](benchmarking/run_wf_selection.speeds.png)
+
+seconds per thousand individuals per thousand generations per megabase of genome
 
 ## spatial simulations:
 
