@@ -52,8 +52,10 @@
 
   img.finger { vertical-align: text-top; }
 
-  .smaller { font-size: 50% }
-  .smallish { font-size: 80% }
+  .smaller { font-size: 50%; }
+  .smallish { font-size: 80%; }
+
+  .hide { opacity: 0; }
 
   </style>
 
@@ -130,7 +132,7 @@
 </figure>
 <p><em>tskit</em>: the tree sequence toolkit</p>
 <div class="floatright">
-<p><a href="tskit.dev">tskit.dev</a></p>
+<p><a href="https://tskit.dev">tskit.dev</a></p>
 </div>
 </div>
 </div>
@@ -180,26 +182,145 @@
 </section>
 <section id="new-features" class="slide level2">
 <h2>New features:</h2>
+<div class="columns">
+<div class="column">
 <ul>
-<li>finite sites</li>
+<li><span class="math inline">\(k\)</span>-ploid individuals, finite sites</li>
+</ul>
+<div class="hide">
+<ul>
 <li>recombination rate maps</li>
+<li>gene conversion</li>
+<li>nicer demographic model specification</li>
 <li>mutation rate maps</li>
+<li>quick analysis</li>
+</ul>
+</div>
+</div><div class="column" style="width:50%;">
+<p><img data-src="figs/example1.png" /></p>
+</div>
+</div>
+</section>
+<section id="new-features-1" class="slide level2">
+<h2>New features:</h2>
+<div class="columns">
+<div class="column">
+<ul>
+<li><span class="math inline">\(k\)</span>-ploid individuals, finite sites</li>
+<li>recombination rate maps</li>
+</ul>
+<div class="hide">
+<ul>
+<li>gene conversion</li>
+<li>nicer demographic model specification</li>
+<li>mutation rate maps</li>
+<li>quick analysis</li>
+</ul>
+</div>
+</div><div class="column" style="width:50%;">
+<p><img data-src="figs/example2.png" /></p>
+</div>
+</div>
+</section>
+<section id="new-features-2" class="slide level2">
+<h2>New features:</h2>
+<div class="columns">
+<div class="column">
+<ul>
+<li><span class="math inline">\(k\)</span>-ploid individuals, finite sites</li>
+<li>recombination rate maps</li>
+<li>gene conversion</li>
+</ul>
+<div class="hide">
+<ul>
+<li>nicer demographic model specification</li>
+<li>mutation rate maps</li>
+<li>quick analysis</li>
+</ul>
+</div>
+</div><div class="column" style="width:50%;">
+<p><img data-src="figs/example3.png" /></p>
+</div>
+</div>
+</section>
+<section id="new-features-3" class="slide level2">
+<h2>New features:</h2>
+<div class="columns">
+<div class="column">
+<ul>
+<li><span class="math inline">\(k\)</span>-ploid individuals, finite sites</li>
+<li>recombination rate maps</li>
 <li>gene conversion</li>
 <li>nicer demographic model specification</li>
 </ul>
+<div class="hide">
+<ul>
+<li>mutation rate maps</li>
+<li>quick analysis</li>
+</ul>
+</div>
+</div><div class="column" style="width:50%;">
+<p><img data-src="figs/example4.png" /></p>
+</div>
+</div>
+</section>
+<section id="new-features-4" class="slide level2">
+<h2>New features:</h2>
+<div class="columns">
+<div class="column">
+<ul>
+<li><span class="math inline">\(k\)</span>-ploid individuals, finite sites</li>
+<li>recombination rate maps</li>
+<li>gene conversion</li>
+<li>nicer demographic model specification</li>
+<li>mutation rate maps</li>
+</ul>
+<div class="hide">
+<ul>
+<li>quick analysis</li>
+</ul>
+</div>
+</div><div class="column" style="width:50%;">
+<p><img data-src="figs/example5.png" /></p>
+</div>
+</div>
+</section>
+<section id="new-features-5" class="slide level2">
+<h2>New features:</h2>
+<div class="columns">
+<div class="column">
+<ul>
+<li><span class="math inline">\(k\)</span>-ploid individuals, finite sites</li>
+<li>recombination rate maps</li>
+<li>gene conversion</li>
+<li>nicer demographic model specification</li>
+<li>mutation rate maps</li>
+<li>quick analysis</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="figs/example6.png" /></p>
+</div>
+</div>
 </section>
 <section id="ancestry-models" class="slide level2">
 <h2>Ancestry models</h2>
 <div class="columns">
-<div class="column" style="width:50%;">
+<div class="column" style="width:40%;">
 <ul>
-<li>“the” Kingman/Hudson coalescent</li>
+<li>“the” coalescent</li>
 <li>discrete-time Wright-Fisher</li>
 <li>selective sweeps</li>
 <li>multiple mergers</li>
 </ul>
-</div><div class="column" style="width:50%;">
-<pre><code>example code</code></pre>
+</div><div class="column" style="width:60%;">
+<div class="small">
+<pre><code>sweep_model = msprime.SweepGenicSelection(
+    position=2.5e4, s=0.01,
+    start_frequency=0.5e-4, end_frequency=0.99, dt=1e-6)
+sts = msprime.sim_ancestry(9,
+    model=[sweep_model, msprime.StandardCoalescent()],
+    population_size=1e4, recombination_rate=1e-8, sequence_length=5e4)</code></pre>
+</div>
 </div>
 </div>
 <p><img data-src="figs/sweep_trees.svg" /></p>
@@ -207,17 +328,28 @@
 <section id="mutation-models" class="slide level2">
 <h2>Mutation models</h2>
 <div class="columns">
-<div class="column" style="width:50%;">
+<div class="column" style="width:40%;">
 <ul>
 <li>infinite sites/alleles</li>
 <li>nucleotides</li>
 <li>amino acids</li>
 </ul>
-<pre><code>example code</code></pre>
-</div><div class="column" style="width:50%;">
+</div><div class="column" style="width:60%;">
+<div class="small">
+<pre><code>dem = msprime.Demography.from_species_tree(
+   &quot;((A:900,B:900)ab:100,C:1000)abc;&quot;,
+   initial_size=1e3)
+samples = {&quot;A&quot;: 2, &quot;B&quot;: 1, &quot;C&quot;: 1}
+ts = msprime.sim_ancestry(
+   8, demography=dem, sequence_length=5e4,
+   recombination_rate=1e-8
+)
+mts = msprime.sim_mutations(ts, rate=1e-7)
+mts.draw_svg()</code></pre>
+</div>
+</div>
+</div>
 <p><img data-src="figs/mutated_trees.svg" /></p>
-</div>
-</div>
 </section></section>
 <section>
 <section id="slim" class="title-slide slide level1">
@@ -300,29 +432,47 @@
 <h1>Runtime</h1>
 
 </section>
-<section id="msprime-1" class="slide level2">
-<h2>msprime</h2>
-<p>XXX NEEDS TO BE FIXED XXX</p>
+<section id="considerations" class="slide level2">
+<h2>Considerations</h2>
+<ul>
+<li><span class="math inline">\(N\)</span> = population size</li>
+<li><span class="math inline">\(L\)</span> = genome length</li>
+<li>sample size (doesn’t matter much)</li>
+<li>number of generations (SLiM only)</li>
+<li>selection</li>
+<li>geography</li>
+<li>adding neutral mutations (nearly instant)</li>
+</ul>
+</section>
+<section id="msprime-1000-samples" class="slide level2">
+<h2>msprime: 1000 samples</h2>
+<p><img data-src="benchmarking/msprime_times_small.png" /></p>
+<p><em>takeaway:</em> hundreds of thousands of megabases takes seconds</p>
+</section>
+<section id="msprime-1000-samples-1" class="slide level2">
+<h2>msprime: 1000 samples</h2>
 <p><img data-src="benchmarking/msprime_times.png" /></p>
+<p><em>takeaway:</em> hundreds of thousands of megabases takes seconds</p>
 </section>
 <section id="basic-demography-slim" class="slide level2">
 <h2>basic demography: SLiM</h2>
 <p><img data-src="benchmarking/run_wf_neutral.speeds.png" /></p>
+<p><em>Note:</em> with <strong>no</strong> mutations</p>
 </section>
 <section id="basic-demography-slim-1" class="slide level2">
-<h2>basic demography: SLiM</h2>
+<h2>Basic demography: SLiM</h2>
 <p><img data-src="benchmarking/run_wf_neutral.speeds_perN.png" /></p>
 <p><em>takeaway:</em> seconds per thousand individuals per thousand generations</p>
 </section>
-<section id="selection" class="slide level2">
-<h2>selection</h2>
-<p><img data-src="benchmarking/run_wf_selection.speeds.png" /></p>
-<p><em>takeaway:</em> similar</p>
+<section id="selection-slim-total-rate-10-10" class="slide level2">
+<h2>Selection: SLiM, total rate <span class="math inline">\(10^{-10}\)</span></h2>
+<p><img data-src="benchmarking/run_wf_selection.speeds_perN.png" /></p>
+<p><em>takeaway:</em> similar, but slower by a factor of 3 for lots of positive mutations</p>
 </section>
-<section id="spatial-simulations" class="slide level2">
-<h2>spatial simulations:</h2>
+<section id="spatial-simulations-slim" class="slide level2">
+<h2>Spatial simulations: SLiM</h2>
 <p><img data-src="benchmarking/run_spatial.speeds.png" /></p>
-<p><em>takeaway:</em> depends a lot on neighborhood size</p>
+<p><em>takeaway:</em> Slower than genomes! Scales with neighborhood size (<span class="math inline">\(\sigma^2\)</span>).</p>
 </section></section>
 <section>
 <section id="best-practices" class="title-slide slide level1">

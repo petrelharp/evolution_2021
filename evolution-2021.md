@@ -67,7 +67,7 @@ Other good ones:
 *tskit*: the tree sequence toolkit
 
 ::: {.floatright}
-[tskit.dev](tskit.dev)
+[tskit.dev](https://tskit.dev)
 :::
 
 :::
@@ -124,28 +124,167 @@ is the way to go!
 
 ## New features:
 
-- finite sites
+::: {.columns}
+:::::: {.column}
+
+- $k$-ploid individuals, finite sites
+
+::: {.hide}
 - recombination rate maps
-- mutation rate maps
 - gene conversion
 - nicer demographic model specification
+- mutation rate maps
+- quick analysis
+:::
+
+:::
+:::::: {.column width=50%}
+
+![](figs/example1.png)
+
+:::
+::::::
+
+## New features:
+
+::: {.columns}
+:::::: {.column}
+
+- $k$-ploid individuals, finite sites
+- recombination rate maps
+
+::: {.hide}
+- gene conversion
+- nicer demographic model specification
+- mutation rate maps
+- quick analysis
+:::
+
+:::
+:::::: {.column width=50%}
+
+![](figs/example2.png)
+
+:::
+::::::
+
+## New features:
+
+::: {.columns}
+:::::: {.column}
+
+- $k$-ploid individuals, finite sites
+- recombination rate maps
+- gene conversion
+
+::: {.hide}
+- nicer demographic model specification
+- mutation rate maps
+- quick analysis
+:::
+
+:::
+:::::: {.column width=50%}
+
+![](figs/example3.png)
+
+:::
+::::::
+
+
+## New features:
+
+::: {.columns}
+:::::: {.column}
+
+- $k$-ploid individuals, finite sites
+- recombination rate maps
+- gene conversion
+- nicer demographic model specification
+
+::: {.hide}
+- mutation rate maps
+- quick analysis
+:::
+
+:::
+:::::: {.column width=50%}
+
+![](figs/example4.png)
+
+:::
+::::::
+
+## New features:
+
+::: {.columns}
+:::::: {.column}
+
+- $k$-ploid individuals, finite sites
+- recombination rate maps
+- gene conversion
+- nicer demographic model specification
+- mutation rate maps
+
+::: {.hide}
+- quick analysis
+:::
+
+:::
+:::::: {.column width=50%}
+
+![](figs/example5.png)
+
+:::
+::::::
+
+## New features:
+
+::: {.columns}
+:::::: {.column}
+
+- $k$-ploid individuals, finite sites
+- recombination rate maps
+- gene conversion
+- nicer demographic model specification
+- mutation rate maps
+- quick analysis
+
+:::
+:::::: {.column width=50%}
+
+![](figs/example6.png)
+
+:::
+::::::
+
+
 
 ## Ancestry models
 
 ::: {.columns}
-:::::: {.column width=50%}
+:::::: {.column width=40%}
 
-- "the" Kingman/Hudson coalescent
+- "the" coalescent
 - discrete-time Wright-Fisher
 - selective sweeps
 - multiple mergers
 
 :::
-:::::: {.column width=50%}
+:::::: {.column width=60%}
+
+::: {.small}
 
 ```
-example code
+sweep_model = msprime.SweepGenicSelection(
+    position=2.5e4, s=0.01,
+    start_frequency=0.5e-4, end_frequency=0.99, dt=1e-6)
+sts = msprime.sim_ancestry(9,
+    model=[sweep_model, msprime.StandardCoalescent()],
+    population_size=1e4, recombination_rate=1e-8, sequence_length=5e4)
 ```
+
+:::
 
 :::
 ::::::
@@ -155,24 +294,35 @@ example code
 ## Mutation models
 
 ::: {.columns}
-:::::: {.column width=50%}
+:::::: {.column width=40%}
 
 - infinite sites/alleles
 - nucleotides
 - amino acids
 
-```
-example code
-```
-
 :::
-:::::: {.column width=50%}
+:::::: {.column width=60%}
 
-![](figs/mutated_trees.svg)
+::: {.small}
+```
+dem = msprime.Demography.from_species_tree(
+   "((A:900,B:900)ab:100,C:1000)abc;",
+   initial_size=1e3)
+samples = {"A": 2, "B": 1, "C": 1}
+ts = msprime.sim_ancestry(
+   8, demography=dem, sequence_length=5e4,
+   recombination_rate=1e-8
+)
+mts = msprime.sim_mutations(ts, rate=1e-7)
+mts.draw_svg()
+```
+:::
 
 :::
 ::::::
 
+
+![](figs/mutated_trees.svg)
 
 # SLiM
 
@@ -256,34 +406,52 @@ Interoperable: now supported also by
 
 # Runtime
 
-## msprime
+## Considerations
 
-XXX NEEDS TO BE FIXED XXX
+- $N$ = population size
+- $L$ = genome length
+- sample size (doesn't matter much)
+- number of generations (SLiM only)
+- selection
+- geography
+- adding neutral mutations (nearly instant)
+
+## msprime: 1000 samples
+
+![](benchmarking/msprime_times_small.png)
+
+*takeaway:* hundreds of thousands of megabases takes seconds
+
+## msprime: 1000 samples
 
 ![](benchmarking/msprime_times.png)
+
+*takeaway:* hundreds of thousands of megabases takes seconds
 
 ## basic demography: SLiM
 
 ![](benchmarking/run_wf_neutral.speeds.png)
 
+*Note:* with **no** mutations
 
-## basic demography: SLiM
+## Basic demography: SLiM
 
 ![](benchmarking/run_wf_neutral.speeds_perN.png)
 
 *takeaway:* seconds per thousand individuals per thousand generations
 
-## selection
+## Selection: SLiM, total rate $10^{-10}$
 
-![](benchmarking/run_wf_selection.speeds.png)
+![](benchmarking/run_wf_selection.speeds_perN.png)
 
-*takeaway:* similar
+*takeaway:* similar, but slower by a factor of 3 for lots of positive mutations
 
-## spatial simulations:
+## Spatial simulations: SLiM
 
 ![](benchmarking/run_spatial.speeds.png)
 
-*takeaway:* depends a lot on neighborhood size
+*takeaway:* Slower than genomes!
+Scales with neighborhood size ($\sigma^2$).
 
 # Best practices
 
