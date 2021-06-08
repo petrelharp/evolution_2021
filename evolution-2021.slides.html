@@ -190,12 +190,18 @@
 </section>
 <section id="ancestry-models" class="slide level2">
 <h2>Ancestry models</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
 <ul>
 <li>“the” Kingman/Hudson coalescent</li>
 <li>discrete-time Wright-Fisher</li>
 <li>selective sweeps</li>
 <li>multiple mergers</li>
 </ul>
+</div><div class="column" style="width:50%;">
+<pre><code>example code</code></pre>
+</div>
+</div>
 <p><img data-src="figs/sweep_trees.svg" /></p>
 </section>
 <section id="mutation-models" class="slide level2">
@@ -207,6 +213,7 @@
 <li>nucleotides</li>
 <li>amino acids</li>
 </ul>
+<pre><code>example code</code></pre>
 </div><div class="column" style="width:50%;">
 <p><img data-src="figs/mutated_trees.svg" /></p>
 </div>
@@ -263,22 +270,30 @@
 <p><em>video credit: Yan Wong</em></p>
 </div>
 </section>
-<section id="benefits-of-interoperability" class="slide level2">
-<h2>Benefits of interoperability</h2>
+<section id="benefits" class="slide level2">
+<h2>Benefits</h2>
 <ul>
-<li>recapitate with msprime</li>
-<li>Add mutations with msprime</li>
-<li>interleave the two</li>
+<li>extremely efficient for large simulations</li>
+<li>retains genotypes <em>and</em> genealogical history</li>
 </ul>
-<p>(figure)</p>
-</section>
-<section id="section-2" class="slide level2">
-<h2></h2>
-<p>Now also supported by</p>
+<p>Interoperable: now supported also by</p>
 <ul>
 <li><a href="http://www1.montpellier.inra.fr/CBGP/software/gspace/download.html">Gspace</a></li>
 <li><a href="https://geonomics.readthedocs.io/en/latest/">geonomics</a></li>
 </ul>
+<p>(figure)</p>
+</section>
+<section id="post-hoc-mutations" class="slide level2">
+<h2>Post-hoc mutations</h2>
+<p>(figure of adding mutations to the trees)</p>
+</section>
+<section id="recapitation" class="slide level2">
+<h2>Recapitation</h2>
+<p>(figure of this)</p>
+</section>
+<section id="joining-separate-simulations-with-common-history" class="slide level2">
+<h2>Joining separate simulations with common history</h2>
+<p>(figure of this)</p>
 </section></section>
 <section>
 <section id="runtime" class="title-slide slide level1">
@@ -287,21 +302,27 @@
 </section>
 <section id="msprime-1" class="slide level2">
 <h2>msprime</h2>
+<p>XXX NEEDS TO BE FIXED XXX</p>
 <p><img data-src="benchmarking/msprime_times.png" /></p>
 </section>
 <section id="basic-demography-slim" class="slide level2">
 <h2>basic demography: SLiM</h2>
 <p><img data-src="benchmarking/run_wf_neutral.speeds.png" /></p>
-<p>seconds per thousand individuals per thousand generations</p>
+</section>
+<section id="basic-demography-slim-1" class="slide level2">
+<h2>basic demography: SLiM</h2>
+<p><img data-src="benchmarking/run_wf_neutral.speeds_perN.png" /></p>
+<p><em>takeaway:</em> seconds per thousand individuals per thousand generations</p>
 </section>
 <section id="selection" class="slide level2">
 <h2>selection</h2>
 <p><img data-src="benchmarking/run_wf_selection.speeds.png" /></p>
-<p>seconds per thousand individuals per thousand generations per megabase of genome</p>
+<p><em>takeaway:</em> similar</p>
 </section>
 <section id="spatial-simulations" class="slide level2">
 <h2>spatial simulations:</h2>
-<p>depends a lot on neighborhood size</p>
+<p><img data-src="benchmarking/run_spatial.speeds.png" /></p>
+<p><em>takeaway:</em> depends a lot on neighborhood size</p>
 </section></section>
 <section>
 <section id="best-practices" class="title-slide slide level1">

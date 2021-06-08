@@ -132,10 +132,23 @@ is the way to go!
 
 ## Ancestry models
 
+::: {.columns}
+:::::: {.column width=50%}
+
 - "the" Kingman/Hudson coalescent
 - discrete-time Wright-Fisher
 - selective sweeps
 - multiple mergers
+
+:::
+:::::: {.column width=50%}
+
+```
+example code
+```
+
+:::
+::::::
 
 ![](figs/sweep_trees.svg)
 
@@ -147,6 +160,10 @@ is the way to go!
 - infinite sites/alleles
 - nucleotides
 - amino acids
+
+```
+example code
+```
 
 :::
 :::::: {.column width=50%}
@@ -213,24 +230,35 @@ image of local adaptation
 *video credit: Yan Wong*
 ::::
 
-## Benefits of interoperability
+## Benefits
 
-- recapitate with msprime
-- Add mutations with msprime
-- interleave the two
+- extremely efficient for large simulations
+- retains genotypes *and* genealogical history
 
-(figure)
-
-##
-
-Now also supported by
+Interoperable: now supported also by
 
 - [Gspace](http://www1.montpellier.inra.fr/CBGP/software/gspace/download.html)
 - [geonomics](https://geonomics.readthedocs.io/en/latest/)
 
+(figure)
+
+## Post-hoc mutations
+
+(figure of adding mutations to the trees)
+
+## Recapitation
+
+(figure of this)
+
+## Joining separate simulations with common history
+
+(figure of this)
+
 # Runtime
 
 ## msprime
+
+XXX NEEDS TO BE FIXED XXX
 
 ![](benchmarking/msprime_times.png)
 
@@ -238,18 +266,24 @@ Now also supported by
 
 ![](benchmarking/run_wf_neutral.speeds.png)
 
-seconds per thousand individuals per thousand generations
+
+## basic demography: SLiM
+
+![](benchmarking/run_wf_neutral.speeds_perN.png)
+
+*takeaway:* seconds per thousand individuals per thousand generations
 
 ## selection
 
 ![](benchmarking/run_wf_selection.speeds.png)
 
-seconds per thousand individuals per thousand generations per megabase of genome
+*takeaway:* similar
 
 ## spatial simulations:
 
-depends a lot on neighborhood size
+![](benchmarking/run_spatial.speeds.png)
 
+*takeaway:* depends a lot on neighborhood size
 
 # Best practices
 
