@@ -380,6 +380,9 @@ Ben Haller
 ::::
 :::
 
+-------
+
+![tskit contributors](figs/tsk_folks.png)
 
 
 ## The tree sequence
