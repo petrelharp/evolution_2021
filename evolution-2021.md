@@ -44,7 +44,7 @@ Other good ones:
 
 ![msprime logo](figs/msprime-logo.png){width=80%}
 
-![SLiM logo](figs/slim_logo.png){width=100%}
+![SLiM logo](figs/slim_logo.svg){width=60%}
 
 :::
 ::::::
@@ -322,6 +322,7 @@ mts.draw_svg()
 ::: {.columns}
 :::::: {.column}
 
+- everything msprime can
 - ecological dynamics with "non-Wright-Fisher" models
 - populations in continuous, heterogeneous geography
 - sex chromosomes, haplodiploidy
@@ -332,7 +333,7 @@ mts.draw_svg()
 :::::: {.column width=50%}
 
 
-![SLiM logo](figs/slim_logo.png){width=80%}
+![SLiM logo](figs/slim_logo.svg){width=80%}
 
 ![Ben Haller](figs/ben-haller.jpg){width=30%}
 
@@ -441,44 +442,43 @@ Interoperable: now supported by
 
 ## msprime: 1000 samples
 
-![](benchmarking/msprime_times_small.png)
+![](benchmarking/msprime_times_small.png){width=80%}
 
 *takeaway:* hundreds of thousands of megabases takes seconds
 
 ## msprime: 1000 samples
 
-![](benchmarking/msprime_times.png)
+![](benchmarking/msprime_times.png){width=80%}
 
 *takeaway:* hundreds of thousands of megabases takes seconds
 
 ## basic demography: SLiM
 
-![](benchmarking/run_wf_neutral.speeds.png)
+![](benchmarking/run_wf_neutral.speeds.png){width=80%}
 
-*Note:* with **no** mutations
+*takeaway:* linear in population size
 
 ## Basic demography: SLiM
 
-![](benchmarking/run_wf_neutral.speeds_perN.png)
+![](benchmarking/run_wf_neutral.speeds_perN.png){width=80%}
 
 *takeaway:* seconds per thousand individuals per thousand generations
 
 ## Selection: SLiM, total rate $10^{-10}$
 
-![](benchmarking/run_wf_selection.speeds_perN.png)
+![](benchmarking/run_wf_selection.speeds_perN.png){width=80%}
 
 *takeaway:* similar, but slower by a factor of 3 for lots of positive mutations
 
 ## Spatial simulations: SLiM
 
-![](benchmarking/run_spatial.speeds.png)
+![](benchmarking/run_spatial.speeds.png){width=80%}
 
-*takeaway:* Slower than genomes!
+*takeaway:* 3x slower than genomes!
 Scales with neighborhood size ($\sigma^2$).
 
-# Suggestions
 
-## How long to run it for?
+## How long do I run it for?
 
 > 1. Until equilibrium. (4N? 20N?)
 > 2. If that's too long, for a "while", and recapitate.
@@ -489,14 +489,6 @@ Scales with neighborhood size ($\sigma^2$).
 Big picture: how accurate do you think your demographic model
     reflects 2N generations ago, really?
 
-
-## How to get help
-
-- SLiM: [the mailing list](https://groups.google.com/forum/#!forum/slim-discuss)
-
-- msprime/tskit: ["discussions" on github](https://github.com/tskit-dev/msprime/discussions)
-
-- Get involved! Suggest features, write documentation, write code...
 
 
 # Thanks!
@@ -526,4 +518,12 @@ Big picture: how accurate do you think your demographic model
 ::::::
 
 
+
+## How to get help
+
+- SLiM: [the mailing list](https://groups.google.com/forum/#!forum/slim-discuss)
+
+- msprime/tskit: ["discussions" on github](https://github.com/tskit-dev/msprime/discussions)
+
+- Get involved! Suggest features, write documentation, write code...
 

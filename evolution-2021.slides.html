@@ -111,7 +111,7 @@
 <img data-src="figs/msprime-logo.png" style="width:80.0%" alt="msprime logo" /><figcaption aria-hidden="true">msprime logo</figcaption>
 </figure>
 <figure>
-<img data-src="figs/slim_logo.png" style="width:100.0%" alt="SLiM logo" /><figcaption aria-hidden="true">SLiM logo</figcaption>
+<img data-src="figs/slim_logo.svg" style="width:60.0%" alt="SLiM logo" /><figcaption aria-hidden="true">SLiM logo</figcaption>
 </figure>
 </div>
 </div>
@@ -356,6 +356,7 @@ mts.draw_svg()</code></pre>
 <div class="columns">
 <div class="column">
 <ul>
+<li>everything msprime can</li>
 <li>ecological dynamics with “non-Wright-Fisher” models</li>
 <li>populations in continuous, heterogeneous geography</li>
 <li>sex chromosomes, haplodiploidy</li>
@@ -364,7 +365,7 @@ mts.draw_svg()</code></pre>
 </ul>
 </div><div class="column" style="width:50%;">
 <figure>
-<img data-src="figs/slim_logo.png" style="width:80.0%" alt="SLiM logo" /><figcaption aria-hidden="true">SLiM logo</figcaption>
+<img data-src="figs/slim_logo.svg" style="width:80.0%" alt="SLiM logo" /><figcaption aria-hidden="true">SLiM logo</figcaption>
 </figure>
 <figure>
 <img data-src="figs/ben-haller.jpg" style="width:30.0%" alt="Ben Haller" /><figcaption aria-hidden="true">Ben Haller</figcaption>
@@ -473,41 +474,36 @@ mts.draw_svg()</code></pre>
 </section>
 <section id="msprime-1000-samples" class="slide level2">
 <h2>msprime: 1000 samples</h2>
-<p><img data-src="benchmarking/msprime_times_small.png" /></p>
+<p><img data-src="benchmarking/msprime_times_small.png" style="width:80.0%" /></p>
 <p><em>takeaway:</em> hundreds of thousands of megabases takes seconds</p>
 </section>
 <section id="msprime-1000-samples-1" class="slide level2">
 <h2>msprime: 1000 samples</h2>
-<p><img data-src="benchmarking/msprime_times.png" /></p>
+<p><img data-src="benchmarking/msprime_times.png" style="width:80.0%" /></p>
 <p><em>takeaway:</em> hundreds of thousands of megabases takes seconds</p>
 </section>
 <section id="basic-demography-slim" class="slide level2">
 <h2>basic demography: SLiM</h2>
-<p><img data-src="benchmarking/run_wf_neutral.speeds.png" /></p>
-<p><em>Note:</em> with <strong>no</strong> mutations</p>
+<p><img data-src="benchmarking/run_wf_neutral.speeds.png" style="width:80.0%" /></p>
+<p><em>takeaway:</em> linear in population size</p>
 </section>
 <section id="basic-demography-slim-1" class="slide level2">
 <h2>Basic demography: SLiM</h2>
-<p><img data-src="benchmarking/run_wf_neutral.speeds_perN.png" /></p>
+<p><img data-src="benchmarking/run_wf_neutral.speeds_perN.png" style="width:80.0%" /></p>
 <p><em>takeaway:</em> seconds per thousand individuals per thousand generations</p>
 </section>
 <section id="selection-slim-total-rate-10-10" class="slide level2">
 <h2>Selection: SLiM, total rate <span class="math inline">\(10^{-10}\)</span></h2>
-<p><img data-src="benchmarking/run_wf_selection.speeds_perN.png" /></p>
+<p><img data-src="benchmarking/run_wf_selection.speeds_perN.png" style="width:80.0%" /></p>
 <p><em>takeaway:</em> similar, but slower by a factor of 3 for lots of positive mutations</p>
 </section>
 <section id="spatial-simulations-slim" class="slide level2">
 <h2>Spatial simulations: SLiM</h2>
-<p><img data-src="benchmarking/run_spatial.speeds.png" /></p>
-<p><em>takeaway:</em> Slower than genomes! Scales with neighborhood size (<span class="math inline">\(\sigma^2\)</span>).</p>
-</section></section>
-<section>
-<section id="suggestions" class="title-slide slide level1">
-<h1>Suggestions</h1>
-
+<p><img data-src="benchmarking/run_spatial.speeds.png" style="width:80.0%" /></p>
+<p><em>takeaway:</em> 3x slower than genomes! Scales with neighborhood size (<span class="math inline">\(\sigma^2\)</span>).</p>
 </section>
-<section id="how-long-to-run-it-for" class="slide level2">
-<h2>How long to run it for?</h2>
+<section id="how-long-do-i-run-it-for" class="slide level2">
+<h2>How long do I run it for?</h2>
 <ol type="1">
 <li class="fragment">Until equilibrium. (4N? 20N?)</li>
 <li class="fragment">If that’s too long, for a “while”, and recapitate.</li>
@@ -516,15 +512,8 @@ mts.draw_svg()</code></pre>
 <div class="fragment">
 <p>Big picture: how accurate do you think your demographic model reflects 2N generations ago, really?</p>
 </div>
-</section>
-<section id="how-to-get-help" class="slide level2">
-<h2>How to get help</h2>
-<ul>
-<li><p>SLiM: <a href="https://groups.google.com/forum/#!forum/slim-discuss">the mailing list</a></p></li>
-<li><p>msprime/tskit: <a href="https://github.com/tskit-dev/msprime/discussions">“discussions” on github</a></p></li>
-<li><p>Get involved! Suggest features, write documentation, write code…</p></li>
-</ul>
 </section></section>
+<section>
 <section id="thanks" class="title-slide slide level1">
 <h1>Thanks!</h1>
 <div class="columns">
@@ -551,6 +540,14 @@ mts.draw_svg()</code></pre>
 </div>
 </div>
 </section>
+<section id="how-to-get-help" class="slide level2">
+<h2>How to get help</h2>
+<ul>
+<li><p>SLiM: <a href="https://groups.google.com/forum/#!forum/slim-discuss">the mailing list</a></p></li>
+<li><p>msprime/tskit: <a href="https://github.com/tskit-dev/msprime/discussions">“discussions” on github</a></p></li>
+<li><p>Get involved! Suggest features, write documentation, write code…</p></li>
+</ul>
+</section></section>
     </div>
   </div>
 
