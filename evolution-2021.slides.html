@@ -94,17 +94,17 @@
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
-<li>msprime: a coalescent simulator</li>
-<li>SLiM: a forwards simulator</li>
+<li><a href="https://tskit.dev/msprime">msprime</a>: a coalescent simulator</li>
+<li><a href="https://messerlab.org/SLiM">SLiM</a>: a forwards simulator</li>
 </ul>
-<p>. . .</p>
 <p>Other good ones:</p>
 <ul>
+<li><a href="https://tskit.dev/fwdpy11">fwdpy11</a></li>
 <li><a href="http://www1.montpellier.inra.fr/CBGP/software/gspace/download.html">Gspace</a></li>
 <li><a href="https://geonomics.readthedocs.io/en/latest/">geonomics</a></li>
-<li><a href="LINK">simbit</a></li>
-<li><a href="LINK">fastsimcoal</a></li>
-<li><a href="LINK">SFS_CODE</a></li>
+<li><a href="https://github.com/RemiMattheyDoret/SimBit">simbit</a></li>
+<li><a href="http://cmpg.unibe.ch/software/fastsimcoal2/">fastsimcoal</a></li>
+<li><a href="http://sfscode.sourceforge.net/SFS_CODE/index/index.html">SFS_CODE</a></li>
 </ul>
 </div><div class="column" style="width:50%;">
 <figure>
@@ -132,20 +132,14 @@
 </figure>
 <p><em>tskit</em>: the tree sequence toolkit</p>
 <div class="floatright">
-<p><a href="https://tskit.dev">tskit.dev</a></p>
+<p><a href="https://tskit.dev">https://tskit.dev</a></p>
 </div>
 </div>
 </div>
 </section>
 <section id="forwards-or-backwards" class="slide level2">
 <h2>Forwards or backwards?</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p>diagram of forwards simulation</p>
-</div><div class="column" style="width:50%;">
-<p>diagram of coalescent simulation</p>
-</div>
-</div>
+<p><img data-src="figs/simulation_types.ink.svg" style="width:100.0%" /></p>
 </section>
 <section id="forwards-or-backwards-1" class="slide level2">
 <h2>Forwards or backwards?</h2>
@@ -333,6 +327,7 @@ sts = msprime.sim_ancestry(9,
 <li>infinite sites/alleles</li>
 <li>nucleotides</li>
 <li>amino acids</li>
+<li>arbitrary Markovian models</li>
 </ul>
 </div><div class="column" style="width:60%;">
 <div class="small">
@@ -352,12 +347,14 @@ mts.draw_svg()</code></pre>
 <p><img data-src="figs/mutated_trees.svg" /></p>
 </section></section>
 <section>
-<section id="slim" class="title-slide slide level1">
-<h1>SLiM</h1>
-<p><img data-src="figs/slim_logo.png" alt="SLiM logo" /> <img data-src="figs/ben-haller.jpg" alt="Ben Haller" /></p>
+<section id="slim" class="title-slide slide level1" data-background-image="figs/slim_screenshot.png" data-background-position="left" data-background-size="100%">
+<h1 data-background-image="figs/slim_screenshot.png" data-background-position="left" data-background-size="100%">SLiM</h1>
+
 </section>
 <section id="an-eco-evolutionary-simulator" class="slide level2">
 <h2>An eco-evolutionary simulator</h2>
+<div class="columns">
+<div class="column">
 <ul>
 <li>ecological dynamics with “non-Wright-Fisher” models</li>
 <li>populations in continuous, heterogeneous geography</li>
@@ -365,12 +362,20 @@ mts.draw_svg()</code></pre>
 <li>complex traits</li>
 <li>context-dependent mutations</li>
 </ul>
+</div><div class="column" style="width:50%;">
+<figure>
+<img data-src="figs/slim_logo.png" style="width:80.0%" alt="SLiM logo" /><figcaption aria-hidden="true">SLiM logo</figcaption>
+</figure>
+<figure>
+<img data-src="figs/ben-haller.jpg" style="width:30.0%" alt="Ben Haller" /><figcaption aria-hidden="true">Ben Haller</figcaption>
+</figure>
+<div class="caption floatright">
+<p>Ben Haller</p>
+</div>
+</div>
+</div>
 </section>
-<section id="section" class="slide level2">
-<h2></h2>
-<p>for instance: image of local adaptation</p>
-</section>
-<section id="section-1" class="slide level2" data-background-image="figs/slim_manual.png" data-background-position="left" data-background-size="50%">
+<section id="section" class="slide level2" data-background-image="figs/slim_manual.png" data-background-position="left" data-background-size="50%">
 <h2 data-background-image="figs/slim_manual.png" data-background-position="left" data-background-size="50%"></h2>
 <div class="columns">
 <div class="column" style="width:60%;">
@@ -378,12 +383,12 @@ mts.draw_svg()</code></pre>
 </div><div class="column" style="width:40%;">
 <p><strong>Getting started:</strong></p>
 <ol type="1">
-<li><p>read the introduction of the SLiM manual (chapters 1 &amp; 3)</p></li>
-<li><p>find a recipe that’s close to what you want to do</p></li>
-<li><p>open up the GUI and try it out</p></li>
-<li><p>print stuff out in the Eidos console</p></li>
-<li><p>add in bits from other recipes</p></li>
-<li><p>take a workshop!</p></li>
+<li>read the introduction of the SLiM manual</li>
+<li>find a recipe that’s close to what you want</li>
+<li>open up the GUI and try it</li>
+<li>print stuff in the console</li>
+<li>add in other bits</li>
+<li>take a workshop!</li>
 </ol>
 </div>
 </div>
@@ -392,8 +397,16 @@ mts.draw_svg()</code></pre>
 <section id="tree-sequences" class="title-slide slide level1">
 <h1>tree sequences</h1>
 <figure>
-<img data-src="figs/tskit_logo.png" alt="tskit logo" /><figcaption aria-hidden="true">tskit logo</figcaption>
+<img data-src="figs/tskit_logo.png" style="width:30.0%" alt="tskit logo" /><figcaption aria-hidden="true">tskit logo</figcaption>
 </figure>
+<div class="floatright">
+<figure>
+<img data-src="figs/jerome.jpeg" style="width:50.0%" alt="jerome kelleher" /><figcaption aria-hidden="true">jerome kelleher</figcaption>
+</figure>
+<div class="caption">
+<p><a href="http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004842">Kelleher, Etheridge, &amp; McVean</a></p>
+</div>
+</div>
 </section>
 <section id="the-tree-sequence" class="slide level2">
 <h2>The tree sequence</h2>
@@ -404,28 +417,36 @@ mts.draw_svg()</code></pre>
 </section>
 <section id="benefits" class="slide level2">
 <h2>Benefits</h2>
+<div class="columns">
+<div class="column">
 <ul>
 <li>extremely efficient for large simulations</li>
 <li>retains genotypes <em>and</em> genealogical history</li>
 </ul>
-<p>Interoperable: now supported also by</p>
+<p>Interoperable: now supported by</p>
 <ul>
+<li><a href="https://tskit.dev/msprime/docs/stable/intro.html">msprime</a></li>
+<li><a href="https://messerlab.org/SLiM">SLiM</a></li>
+<li><a href="https://molpopgen.github.io/fwdpy11/intro.html">fwdpy11</a></li>
 <li><a href="http://www1.montpellier.inra.fr/CBGP/software/gspace/download.html">Gspace</a></li>
 <li><a href="https://geonomics.readthedocs.io/en/latest/">geonomics</a></li>
 </ul>
-<p>(figure)</p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="figs/fire_trees.svg" /></p>
+</div>
+</div>
 </section>
 <section id="post-hoc-mutations" class="slide level2">
 <h2>Post-hoc mutations</h2>
-<p>(figure of adding mutations to the trees)</p>
+<figure>
+<img data-src="figs/add_mutations.svg" alt="diagram of adding mutations to a tree sequence" /><figcaption aria-hidden="true">diagram of adding mutations to a tree sequence</figcaption>
+</figure>
 </section>
 <section id="recapitation" class="slide level2">
 <h2>Recapitation</h2>
-<p>(figure of this)</p>
-</section>
-<section id="joining-separate-simulations-with-common-history" class="slide level2">
-<h2>Joining separate simulations with common history</h2>
-<p>(figure of this)</p>
+<figure>
+<img data-src="figs/recapitation.svg" alt="diagram of recapitation" /><figcaption aria-hidden="true">diagram of recapitation</figcaption>
+</figure>
 </section></section>
 <section>
 <section id="runtime" class="title-slide slide level1">
@@ -475,22 +496,55 @@ mts.draw_svg()</code></pre>
 <p><em>takeaway:</em> Slower than genomes! Scales with neighborhood size (<span class="math inline">\(\sigma^2\)</span>).</p>
 </section></section>
 <section>
-<section id="best-practices" class="title-slide slide level1">
-<h1>Best practices</h1>
+<section id="suggestions" class="title-slide slide level1">
+<h1>Suggestions</h1>
 
 </section>
 <section id="how-long-to-run-it-for" class="slide level2">
 <h2>How long to run it for?</h2>
-<p>what is equilibrium?</p>
-<p>when is recapitation ok?</p>
+<ol type="1">
+<li class="fragment">Until equilibrium. (4N? 20N?)</li>
+<li class="fragment">If that’s too long, for a “while”, and recapitate.</li>
+<li class="fragment">Your results shouldn’t depend too much on how you do it.</li>
+</ol>
+<div class="fragment">
+<p>Big picture: how accurate do you think your demographic model reflects 2N generations ago, really?</p>
+</div>
 </section>
 <section id="how-to-get-help" class="slide level2">
 <h2>How to get help</h2>
 <ul>
-<li><p>SLiM: the mailing list</p></li>
-<li><p>msprime/tskit: “discussion” on github</p></li>
+<li><p>SLiM: <a href="https://groups.google.com/forum/#!forum/slim-discuss">the mailing list</a></p></li>
+<li><p>msprime/tskit: <a href="https://github.com/tskit-dev/msprime/discussions">“discussions” on github</a></p></li>
+<li><p>Get involved! Suggest features, write documentation, write code…</p></li>
 </ul>
 </section></section>
+<section id="thanks" class="title-slide slide level1">
+<h1>Thanks!</h1>
+<div class="columns">
+<div class="column">
+<figure>
+<img data-src="figs/bdi.png" style="width:30.0%" alt="BDI" /><figcaption aria-hidden="true">BDI</figcaption>
+</figure>
+<figure>
+<img data-src="figs/nih.jpeg" alt="NHGRI" /><figcaption aria-hidden="true">NHGRI</figcaption>
+</figure>
+</div><div class="column" style="width:50%;">
+<figure>
+<img data-src="figs/tskit_logo.png" style="width:50.0%" alt="tskit logo" /><figcaption aria-hidden="true">tskit logo</figcaption>
+</figure>
+<ul>
+<li>Jerome Kelleher</li>
+<li>Ben Haller</li>
+<li>Ben Jeffery</li>
+<li>Yan Wong</li>
+<li>Murillo Rodrigues</li>
+<li>Andy Kern</li>
+<li>Philipp Messer</li>
+</ul>
+</div>
+</div>
+</section>
     </div>
   </div>
 

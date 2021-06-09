@@ -24,18 +24,19 @@ date: "Evolution 2021"
 ::: {.columns}
 :::::: {.column width=50%}
 
-- msprime: a coalescent simulator
-- SLiM: a forwards simulator
+- [msprime](https://tskit.dev/msprime): a coalescent simulator
+- [SLiM](https://messerlab.org/SLiM): a forwards simulator
 
-. . .
+
 
 Other good ones:
 
+- [fwdpy11](https://tskit.dev/fwdpy11)
 - [Gspace](http://www1.montpellier.inra.fr/CBGP/software/gspace/download.html)
 - [geonomics](https://geonomics.readthedocs.io/en/latest/)
-- [simbit](LINK)
-- [fastsimcoal](LINK)
-- [SFS_CODE](LINK)
+- [simbit](https://github.com/RemiMattheyDoret/SimBit)
+- [fastsimcoal](http://cmpg.unibe.ch/software/fastsimcoal2/)
+- [SFS_CODE](http://sfscode.sourceforge.net/SFS_CODE/index/index.html)
 
 :::
 :::::: {.column width=50%}
@@ -67,7 +68,7 @@ Other good ones:
 *tskit*: the tree sequence toolkit
 
 ::: {.floatright}
-[tskit.dev](https://tskit.dev)
+[https://tskit.dev](https://tskit.dev)
 :::
 
 :::
@@ -76,18 +77,7 @@ Other good ones:
 
 ## Forwards or backwards?
 
-::: {.columns}
-:::::: {.column width=50%}
-
-diagram of forwards simulation
-
-::: 
-:::::: {.column width=50%}
-
-diagram of coalescent simulation
-
-:::
-:::::: 
+![](figs/simulation_types.ink.svg){width=100%}
 
 ## Forwards or backwards?
 
@@ -299,6 +289,7 @@ sts = msprime.sim_ancestry(9,
 - infinite sites/alleles
 - nucleotides
 - amino acids
+- arbitrary Markovian models
 
 :::
 :::::: {.column width=60%}
@@ -324,13 +315,12 @@ mts.draw_svg()
 
 ![](figs/mutated_trees.svg)
 
-# SLiM
-
-![SLiM logo](figs/slim_logo.png)
-![Ben Haller](figs/ben-haller.jpg)
-
+# SLiM {data-background-image="figs/slim_screenshot.png" data-background-position=left data-background-size=100%}
 
 ## An eco-evolutionary simulator
+
+::: {.columns}
+:::::: {.column}
 
 - ecological dynamics with "non-Wright-Fisher" models
 - populations in continuous, heterogeneous geography
@@ -338,10 +328,22 @@ mts.draw_svg()
 - complex traits
 - context-dependent mutations
 
-##
+:::
+:::::: {.column width=50%}
 
-for instance:
-image of local adaptation
+
+![SLiM logo](figs/slim_logo.png){width=80%}
+
+![Ben Haller](figs/ben-haller.jpg){width=30%}
+
+:::{.caption .floatright}
+Ben Haller
+:::
+
+
+:::
+::::::
+
 
 
 ## {data-background-image="figs/slim_manual.png" data-background-position=left data-background-size=50%}
@@ -354,14 +356,11 @@ image of local adaptation
 
 **Getting started:**
 
-1. read the introduction of the SLiM manual (chapters 1 & 3)
-2. find a recipe that's close to what you want to do
-3. open up the GUI and try it out
-
-
-4. print stuff out in the Eidos console
-5. add in bits from other recipes
-
+1. read the introduction of the SLiM manual
+2. find a recipe that's close to what you want
+3. open up the GUI and try it
+4. print stuff in the console
+5. add in other bits
 6. take a workshop!
 
 
@@ -370,7 +369,18 @@ image of local adaptation
 
 # tree sequences
 
-![tskit logo](figs/tskit_logo.png)
+![tskit logo](figs/tskit_logo.png){width=30%}
+
+::: {.floatright}
+![jerome kelleher](figs/jerome.jpeg){width=50%}
+
+
+:::: {.caption}
+[Kelleher, Etheridge, & McVean](http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004842) 
+::::
+:::
+
+
 
 ## The tree sequence
 
@@ -382,27 +392,37 @@ image of local adaptation
 
 ## Benefits
 
+::: {.columns}
+:::::: {.column}
+
 - extremely efficient for large simulations
 - retains genotypes *and* genealogical history
 
-Interoperable: now supported also by
+Interoperable: now supported by
 
+- [msprime](https://tskit.dev/msprime/docs/stable/intro.html)
+- [SLiM](https://messerlab.org/SLiM)
+- [fwdpy11](https://molpopgen.github.io/fwdpy11/intro.html)
 - [Gspace](http://www1.montpellier.inra.fr/CBGP/software/gspace/download.html)
 - [geonomics](https://geonomics.readthedocs.io/en/latest/)
 
-(figure)
+:::
+:::::: {.column width=50%}
+
+![](figs/fire_trees.svg)
+
+:::
+::::::
+
 
 ## Post-hoc mutations
 
-(figure of adding mutations to the trees)
+![diagram of adding mutations to a tree sequence](figs/add_mutations.svg)
 
 ## Recapitation
 
-(figure of this)
+![diagram of recapitation](figs/recapitation.svg)
 
-## Joining separate simulations with common history
-
-(figure of this)
 
 # Runtime
 
@@ -453,17 +473,54 @@ Interoperable: now supported also by
 *takeaway:* Slower than genomes!
 Scales with neighborhood size ($\sigma^2$).
 
-# Best practices
+# Suggestions
 
 ## How long to run it for?
 
-what is equilibrium?
+> 1. Until equilibrium. (4N? 20N?)
+> 2. If that's too long, for a "while", and recapitate.
+> 3. Your results shouldn't depend too much on how you do it.
 
-when is recapitation ok?
+. . .
+
+Big picture: how accurate do you think your demographic model
+    reflects 2N generations ago, really?
+
 
 ## How to get help
 
-- SLiM: the mailing list
+- SLiM: [the mailing list](https://groups.google.com/forum/#!forum/slim-discuss)
 
-- msprime/tskit: "discussion" on github
+- msprime/tskit: ["discussions" on github](https://github.com/tskit-dev/msprime/discussions)
+
+- Get involved! Suggest features, write documentation, write code...
+
+
+# Thanks!
+
+::: {.columns}
+:::::: {.column}
+
+![BDI](figs/bdi.png){ width=30% }
+
+![NHGRI](figs/nih.jpeg)
+
+
+:::
+:::::: {.column width=50%}
+
+![tskit logo](figs/tskit_logo.png){width=50%}
+
+- Jerome Kelleher
+- Ben Haller
+- Ben Jeffery
+- Yan Wong
+- Murillo Rodrigues
+- Andy Kern
+- Philipp Messer
+
+:::
+::::::
+
+
 
