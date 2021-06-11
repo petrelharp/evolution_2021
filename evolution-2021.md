@@ -1,7 +1,7 @@
 ---
 title:  "New tools for popgen simulation and analysis: <br/> What's possible?"
 author: "Peter Ralph <br/> University of Oregon <br/> Institute of Ecology and Evolution"
-date: "Evolution 2021"
+date: "Evolution 2021<br/>*slides:* [github:petrelharp/evolution_2021](https://github.com/petrelharp/evolution_2021)"
 ---
 
 
@@ -50,31 +50,6 @@ Other good ones:
 ::::::
 
 
-## Development philosophy
-
-::: {.columns}
-:::::: {.column width=50%}
-
-- open, welcoming, supportive
-- well-documented
-- reliable, reproducible
-- backwards compatible
-
-:::
-:::::: {.column width=50%}
-
-![tskit logo](figs/tskit_logo.png){width=80%}
-
-*tskit*: the tree sequence toolkit
-
-::: {.floatright}
-[https://tskit.dev](https://tskit.dev)
-:::
-
-:::
-::::::
-
-
 ## Forwards or backwards?
 
 ![](figs/simulation_types.ink.svg){width=100%}
@@ -103,7 +78,7 @@ is the way to go!
 
 
 :::: {.caption}
-[Kelleher, Etheridge, & McVean](http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004842) 
+[Kelleher, Etheridge, & McVean 2016](http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004842) 
 ::::
 :::
 
@@ -257,8 +232,8 @@ is the way to go!
 
 - "the" coalescent
 - discrete-time Wright-Fisher
-- selective sweeps
 - multiple mergers
+- selective sweeps
 
 :::
 :::::: {.column width=60%}
@@ -315,7 +290,7 @@ mts.draw_svg()
 
 ![](figs/mutated_trees.svg)
 
-# SLiM {data-background-image="figs/slim_screenshot.png" data-background-position=left data-background-size=100%}
+# SLiMv3 {data-background-image="figs/slim_screenshot.png" data-background-position=left data-background-size=100%}
 
 ## An eco-evolutionary simulator
 
@@ -328,17 +303,17 @@ mts.draw_svg()
 - sex chromosomes, haplodiploidy
 - complex traits
 - context-dependent mutations
-- **next:** interacting species
+- **v4:** interacting species
 
 :::
 :::::: {.column width=50%}
 
 
-![SLiM logo](figs/slim_logo.svg){width=80%}
-
-![Ben Haller](figs/ben-haller.jpg){width=30%}
+![SLiM logo](figs/slim_logo.svg){width=60%}
 
 :::{.caption .floatright}
+![Ben Haller](figs/ben-haller.jpg){width=90%}
+
 Ben Haller
 :::
 
@@ -378,13 +353,38 @@ Ben Haller
 
 
 :::: {.caption}
-[Kelleher, Etheridge, & McVean](http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004842) 
+[Kelleher, Etheridge, & McVean 2016](http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004842) 
 ::::
 :::
 
 -------
 
 ![tskit contributors](figs/tsk_folks.png)
+
+## Development philosophy
+
+::: {.columns}
+:::::: {.column width=50%}
+
+- open, welcoming, supportive
+- well-documented
+- reliable, reproducible
+- backwards compatible
+
+:::
+:::::: {.column width=50%}
+
+![tskit logo](figs/tskit_logo.png){width=80%}
+
+*tskit*: the tree sequence toolkit
+
+::: {.floatright}
+[https://tskit.dev](https://tskit.dev)
+:::
+
+:::
+::::::
+
 
 
 ## The tree sequence
@@ -430,6 +430,60 @@ Interoperable: now supported by
 
 
 # Runtime
+
+::: {.columns}
+:::::: {.column width=40%}
+
+- $N_e$ = population size
+- $L$ = genome length
+- $T$ = # of generations
+- sample size doesn't matter
+- "chromosome" = $10^8$ bp
+
+:::
+:::::: {.column width=60%}
+
+
+- `msprime`: quadratic in $N_e L$
+
+    * chromosomes, $N_e = 1,000$: seconds
+    * megabases, $N_e = 100,000$: seconds
+    * chromosomes, $N_e = 100,000$: hours
+    * megabases, $N_e = 10,000,000$: hours
+
+:::
+::::::
+
+::: {.columns}
+:::::: {.column width=20%}
+
+:::
+:::::: {.column width=60%}
+
+- `SLiM`: linear in $N_e T$
+
+    * $N_e = 1,000$: seconds/thousand gens
+    * $N_e = 100,000$: minutes/thousand gens
+    * selection: 3x slower
+    * space: 10x slower with neighborhood size 20
+
+:::
+:::::: {.column width=20%}
+
+:::
+::::::
+
+
+## How long do I run it for?
+
+> 1. Until equilibrium. (4N? 20N?)
+> 2. If that's too long, for a "while", and recapitate.
+> 3. Your results shouldn't depend too much on how you do it.
+
+. . .
+
+Big picture: how accurate do you think your demographic model
+    reflects 2N generations ago, really?
 
 ## Considerations
 
@@ -479,17 +533,6 @@ Interoperable: now supported by
 Scales with neighborhood size ($\sigma^2$).
 
 
-## How long do I run it for?
-
-> 1. Until equilibrium. (4N? 20N?)
-> 2. If that's too long, for a "while", and recapitate.
-> 3. Your results shouldn't depend too much on how you do it.
-
-. . .
-
-Big picture: how accurate do you think your demographic model
-    reflects 2N generations ago, really?
-
 
 
 # Thanks!
@@ -514,6 +557,8 @@ Big picture: how accurate do you think your demographic model
 - Murillo Rodrigues
 - Andy Kern
 - Philipp Messer
+
+[https://tskit.dev/](https://tskit.dev/)
 
 :::
 ::::::

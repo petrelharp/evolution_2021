@@ -74,7 +74,7 @@
 <section id="title-slide">
   <h1 class="title">New tools for popgen simulation and analysis: <br/> What’s possible?</h1>
   <p class="author">Peter Ralph <br/> University of Oregon <br/> Institute of Ecology and Evolution</p>
-  <p class="date">Evolution 2021</p>
+  <p class="date">Evolution 2021<br/><em>slides:</em> <a href="https://github.com/petrelharp/evolution_2021">github:petrelharp/evolution_2021</a></p>
 </section>
 
 <section>
@@ -116,27 +116,6 @@
 </div>
 </div>
 </section>
-<section id="development-philosophy" class="slide level2">
-<h2>Development philosophy</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<ul>
-<li>open, welcoming, supportive</li>
-<li>well-documented</li>
-<li>reliable, reproducible</li>
-<li>backwards compatible</li>
-</ul>
-</div><div class="column" style="width:50%;">
-<figure>
-<img data-src="figs/tskit_logo.png" style="width:80.0%" alt="tskit logo" /><figcaption aria-hidden="true">tskit logo</figcaption>
-</figure>
-<p><em>tskit</em>: the tree sequence toolkit</p>
-<div class="floatright">
-<p><a href="https://tskit.dev">https://tskit.dev</a></p>
-</div>
-</div>
-</div>
-</section>
 <section id="forwards-or-backwards" class="slide level2">
 <h2>Forwards or backwards?</h2>
 <p><img data-src="figs/simulation_types.ink.svg" style="width:100.0%" /></p>
@@ -164,7 +143,7 @@
 <img data-src="figs/jerome.jpeg" style="width:50.0%" alt="jerome kelleher" /><figcaption aria-hidden="true">jerome kelleher</figcaption>
 </figure>
 <div class="caption">
-<p><a href="http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004842">Kelleher, Etheridge, &amp; McVean</a></p>
+<p><a href="http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004842">Kelleher, Etheridge, &amp; McVean 2016</a></p>
 </div>
 </div>
 </section>
@@ -303,8 +282,8 @@
 <ul>
 <li>“the” coalescent</li>
 <li>discrete-time Wright-Fisher</li>
-<li>selective sweeps</li>
 <li>multiple mergers</li>
+<li>selective sweeps</li>
 </ul>
 </div><div class="column" style="width:60%;">
 <div class="small">
@@ -347,8 +326,8 @@ mts.draw_svg()</code></pre>
 <p><img data-src="figs/mutated_trees.svg" /></p>
 </section></section>
 <section>
-<section id="slim" class="title-slide slide level1" data-background-image="figs/slim_screenshot.png" data-background-position="left" data-background-size="100%">
-<h1 data-background-image="figs/slim_screenshot.png" data-background-position="left" data-background-size="100%">SLiM</h1>
+<section id="slimv3" class="title-slide slide level1" data-background-image="figs/slim_screenshot.png" data-background-position="left" data-background-size="100%">
+<h1 data-background-image="figs/slim_screenshot.png" data-background-position="left" data-background-size="100%">SLiMv3</h1>
 
 </section>
 <section id="an-eco-evolutionary-simulator" class="slide level2">
@@ -362,16 +341,16 @@ mts.draw_svg()</code></pre>
 <li>sex chromosomes, haplodiploidy</li>
 <li>complex traits</li>
 <li>context-dependent mutations</li>
-<li><strong>next:</strong> interacting species</li>
+<li><strong>v4:</strong> interacting species</li>
 </ul>
 </div><div class="column" style="width:50%;">
 <figure>
-<img data-src="figs/slim_logo.svg" style="width:80.0%" alt="SLiM logo" /><figcaption aria-hidden="true">SLiM logo</figcaption>
-</figure>
-<figure>
-<img data-src="figs/ben-haller.jpg" style="width:30.0%" alt="Ben Haller" /><figcaption aria-hidden="true">Ben Haller</figcaption>
+<img data-src="figs/slim_logo.svg" style="width:60.0%" alt="SLiM logo" /><figcaption aria-hidden="true">SLiM logo</figcaption>
 </figure>
 <div class="caption floatright">
+<figure>
+<img data-src="figs/ben-haller.jpg" style="width:90.0%" alt="Ben Haller" /><figcaption aria-hidden="true">Ben Haller</figcaption>
+</figure>
 <p>Ben Haller</p>
 </div>
 </div>
@@ -406,7 +385,7 @@ mts.draw_svg()</code></pre>
 <img data-src="figs/jerome.jpeg" style="width:50.0%" alt="jerome kelleher" /><figcaption aria-hidden="true">jerome kelleher</figcaption>
 </figure>
 <div class="caption">
-<p><a href="http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004842">Kelleher, Etheridge, &amp; McVean</a></p>
+<p><a href="http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004842">Kelleher, Etheridge, &amp; McVean 2016</a></p>
 </div>
 </div>
 </section>
@@ -415,6 +394,27 @@ mts.draw_svg()</code></pre>
 <figure>
 <img data-src="figs/tsk_folks.png" alt="tskit contributors" /><figcaption aria-hidden="true">tskit contributors</figcaption>
 </figure>
+</section>
+<section id="development-philosophy" class="slide level2">
+<h2>Development philosophy</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>open, welcoming, supportive</li>
+<li>well-documented</li>
+<li>reliable, reproducible</li>
+<li>backwards compatible</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<figure>
+<img data-src="figs/tskit_logo.png" style="width:80.0%" alt="tskit logo" /><figcaption aria-hidden="true">tskit logo</figcaption>
+</figure>
+<p><em>tskit</em>: the tree sequence toolkit</p>
+<div class="floatright">
+<p><a href="https://tskit.dev">https://tskit.dev</a></p>
+</div>
+</div>
+</div>
 </section>
 <section id="the-tree-sequence" class="slide level2">
 <h2>The tree sequence</h2>
@@ -459,7 +459,55 @@ mts.draw_svg()</code></pre>
 <section>
 <section id="runtime" class="title-slide slide level1">
 <h1>Runtime</h1>
+<div class="columns">
+<div class="column" style="width:40%;">
+<ul>
+<li><span class="math inline">\(N_e\)</span> = population size</li>
+<li><span class="math inline">\(L\)</span> = genome length</li>
+<li><span class="math inline">\(T\)</span> = # of generations</li>
+<li>sample size doesn’t matter</li>
+<li>“chromosome” = <span class="math inline">\(10^8\)</span> bp</li>
+</ul>
+</div><div class="column" style="width:60%;">
+<ul>
+<li><p><code>msprime</code>: quadratic in <span class="math inline">\(N_e L\)</span></p>
+<ul>
+<li>chromosomes, <span class="math inline">\(N_e = 1,000\)</span>: seconds</li>
+<li>megabases, <span class="math inline">\(N_e = 100,000\)</span>: seconds</li>
+<li>chromosomes, <span class="math inline">\(N_e = 100,000\)</span>: hours</li>
+<li>megabases, <span class="math inline">\(N_e = 10,000,000\)</span>: hours</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:20%;">
 
+</div><div class="column" style="width:60%;">
+<ul>
+<li><p><code>SLiM</code>: linear in <span class="math inline">\(N_e T\)</span></p>
+<ul>
+<li><span class="math inline">\(N_e = 1,000\)</span>: seconds/thousand gens</li>
+<li><span class="math inline">\(N_e = 100,000\)</span>: minutes/thousand gens</li>
+<li>selection: 3x slower</li>
+<li>space: 10x slower with neighborhood size 20</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:20%;">
+
+</div>
+</div>
+</section>
+<section id="how-long-do-i-run-it-for" class="slide level2">
+<h2>How long do I run it for?</h2>
+<ol type="1">
+<li class="fragment">Until equilibrium. (4N? 20N?)</li>
+<li class="fragment">If that’s too long, for a “while”, and recapitate.</li>
+<li class="fragment">Your results shouldn’t depend too much on how you do it.</li>
+</ol>
+<div class="fragment">
+<p>Big picture: how accurate do you think your demographic model reflects 2N generations ago, really?</p>
+</div>
 </section>
 <section id="considerations" class="slide level2">
 <h2>Considerations</h2>
@@ -502,17 +550,6 @@ mts.draw_svg()</code></pre>
 <h2>Spatial simulations: SLiM</h2>
 <p><img data-src="benchmarking/run_spatial.speeds.png" style="width:80.0%" /></p>
 <p><em>takeaway:</em> 3x slower than genomes! Scales with neighborhood size (<span class="math inline">\(\sigma^2\)</span>).</p>
-</section>
-<section id="how-long-do-i-run-it-for" class="slide level2">
-<h2>How long do I run it for?</h2>
-<ol type="1">
-<li class="fragment">Until equilibrium. (4N? 20N?)</li>
-<li class="fragment">If that’s too long, for a “while”, and recapitate.</li>
-<li class="fragment">Your results shouldn’t depend too much on how you do it.</li>
-</ol>
-<div class="fragment">
-<p>Big picture: how accurate do you think your demographic model reflects 2N generations ago, really?</p>
-</div>
 </section></section>
 <section>
 <section id="thanks" class="title-slide slide level1">
@@ -538,6 +575,7 @@ mts.draw_svg()</code></pre>
 <li>Andy Kern</li>
 <li>Philipp Messer</li>
 </ul>
+<p><a href="https://tskit.dev/">https://tskit.dev/</a></p>
 </div>
 </div>
 </section>
